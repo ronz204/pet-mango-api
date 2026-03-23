@@ -1,1 +1,0 @@
-### POC Gasto MVP | Client
