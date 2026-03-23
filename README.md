@@ -1,1 +1,1 @@
-### POC Gasto MVP
+### Mango | Real Time Chat with Redis
