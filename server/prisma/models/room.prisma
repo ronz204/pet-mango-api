@@ -4,6 +4,7 @@ model Room {
 
   visibility RoomVisibility @default(PRIVATE)
 
+  members Member[]
   messages Message[]
 
   createdAt DateTime @default(now())
