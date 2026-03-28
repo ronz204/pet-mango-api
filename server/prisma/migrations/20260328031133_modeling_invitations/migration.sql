@@ -1,0 +1,21 @@
+-- CreateEnum
+CREATE TYPE "mango"."InvitationStatus" AS ENUM ('PENDING', 'ACCEPTED', 'DECLINED', 'EXPIRED');
+
+-- CreateTable
+CREATE TABLE "mango"."invitations" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "status" "mango"."InvitationStatus" NOT NULL DEFAULT 'PENDING',
+    "inviterId" INTEGER NOT NULL,
+    "roomId" INTEGER NOT NULL,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "invitations_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "mango"."invitations" ADD CONSTRAINT "invitations_inviterId_fkey" FOREIGN KEY ("inviterId") REFERENCES "mango"."users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "mango"."invitations" ADD CONSTRAINT "invitations_roomId_fkey" FOREIGN KEY ("roomId") REFERENCES "mango"."rooms"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
