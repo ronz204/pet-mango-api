@@ -7,6 +7,9 @@ volumes:
   mango-data:
     driver: local
     name: mango-data
+  redis-data:
+    driver: local
+    name: redis-data
 
 networks:
   mango-network:
