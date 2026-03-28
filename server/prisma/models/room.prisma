@@ -4,6 +4,8 @@ model Room {
 
   visibility RoomVisibility @default(PRIVATE)
 
+  messages Message[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
