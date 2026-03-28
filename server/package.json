@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.50",
   "scripts": {
-    "dev": "bun run --watch source/boot.ts"
+    "start": "bun run --watch source/boot.ts"
   },
   "dependencies": {
     "elysia": "^1.4.28"
