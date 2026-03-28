@@ -1,0 +1,57 @@
+# Dependencies
+node_modules
+generated
+bun.lockb
+
+# Development files
+*.log
+*.tmp
+*.swp
+*~
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+common.yml
+compose.yml
+compose.base.yml
+compose.dev.yml
+compose.prod.yml
+.dockerignore
+
+# IDE
+.vscode
+.idea
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage
+.nyc_output
+*.test.ts
+*.spec.ts
+
+# Build
+dist
+build
+.cache
+*.exe
+graph*
+
+# Environment
+.env
+.env.dev
+.env.test
+.env.prod
+.env.local
+
+# Documentation
+README.md
+*.md
+!package.json
