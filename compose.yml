@@ -1,1 +1,14 @@
 name: mango
+
+include:
+  - path: ./server/compose.yml
+
+volumes:
+  mango-data:
+    driver: local
+    name: mango-data
+
+networks:
+  mango-network:
+    driver: bridge
+    name: mango-network
