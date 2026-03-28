@@ -13,6 +13,9 @@ CREATE TABLE "mango"."members" (
     CONSTRAINT "members_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "members_userId_roomId_key" ON "mango"."members"("userId", "roomId");
+
 -- AddForeignKey
 ALTER TABLE "mango"."members" ADD CONSTRAINT "members_userId_fkey" FOREIGN KEY ("userId") REFERENCES "mango"."users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
