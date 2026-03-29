@@ -1,9 +1,11 @@
 import { Elysia } from "elysia";
-import { HealthPlugin } from "@plugins/health.plugin";
+import { AuthPlugin } from "@features/auth/plugin";
 import { UsersPlugin } from "@features/users/plugin";
+import { HealthPlugin } from "@plugins/health.plugin";
 
 const app = new Elysia({ prefix: "/api" })
   .use(HealthPlugin)
+  .use(AuthPlugin)
   .use(UsersPlugin)
   .listen(process.env.PORT!);
 
