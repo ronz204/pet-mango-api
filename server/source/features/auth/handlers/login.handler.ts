@@ -15,6 +15,13 @@ export class LoginHandler implements Handler<LoginInput, LoginOutput> {
     const exists = await this.prisma.user.findFirst(existsQuery);
     if (!exists) throw new Error("User not found");
 
+    const isValid = await this.verify(request, exists.password);
+    if (!isValid) throw new Error("Invalid password");
+
     return LoginMapper.toOutput(exists);
+  };
+
+  private async verify(request: LoginInput, hashed: string): Promise<boolean> {
+    return await Bun.password.verify(request.body.password, hashed);
   };
 };
