@@ -4,7 +4,7 @@ export const TokenSchema = t.Object({
   id: t.Number(),
 });
 
-export const Unauthorized = t.Object({
+export const AuthResponse401 = t.Object({
   error: t.Literal("Unauthorized"),
   message: t.String(),
 });

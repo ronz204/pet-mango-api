@@ -35,6 +35,7 @@
       "@features/*": ["./source/features/*"],
       "@database/*": ["./source/database/*"],
       "@contracts/*": ["./source/contracts/*"],
+      "@auth/*": ["./source/authentication/*"],
     }
   }
 }

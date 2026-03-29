@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { TokenPlugin } from "@plugins/token.plugin";
+import { TokenPlugin } from "@auth/token.plugin";
 import { ReadHeaders } from "../schemas/read.schema";
 import { ReadResponse } from "../schemas/read.schema";
 import { ReadHandler } from "../handlers/read.handler";
