@@ -13,7 +13,7 @@ export const LoginPlugin = new Elysia({ name: "login.plugin" })
     loginH: new LoginHandler(prisma),
   }))
 
-  .post("/sign", async ({ body, status, jwt, loginH }) => {
+  .post("/login", async ({ body, status, jwt, loginH }) => {
     const response = await loginH.handle({ body });
     const token = await jwt.sign(response);
     return status(200, { token });
