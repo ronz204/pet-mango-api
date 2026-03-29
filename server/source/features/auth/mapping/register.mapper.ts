@@ -1,8 +1,8 @@
 import type { User } from "@prisma/client";
-import type { RegisterOutput } from "../schemas/register.schema";
+import type { RegisterPayload } from "../schemas/register.schema";
 
 export class RegisterMapper {
-  public static toOutput(data: User): RegisterOutput {
-    return { user: data.id };
+  public static toResponse(data: User): RegisterPayload {
+    return { id: data.id };
   };
 };
