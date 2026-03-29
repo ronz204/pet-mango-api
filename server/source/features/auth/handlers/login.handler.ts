@@ -3,13 +3,13 @@ import { LoginMapper } from "../mapping/login.mapper";
 import { SearchUserSpecify } from "@features/users/prisma/search.specify";
 
 import type { Handler } from "@contracts/handler.contract";
-import type { LoginInput } from "../schemas/login.schema";
-import type { LoginOutput } from "../schemas/login.schema";
+import type { LoginRequest } from "../schemas/login.schema";
+import type { LoginPayload } from "../schemas/login.schema";
 
-export class LoginHandler implements Handler<LoginInput, LoginOutput> {
+export class LoginHandler implements Handler<LoginRequest, LoginPayload> {
   constructor(private readonly prisma: PrismaClient) {};
 
-  public async handle(request: LoginInput): Promise<LoginOutput> {
+  public async handle(request: LoginRequest): Promise<LoginPayload> {
     const existsQuery = new SearchUserSpecify(request.body).toQuery();
 
     const exists = await this.prisma.user.findFirst(existsQuery);
@@ -18,10 +18,10 @@ export class LoginHandler implements Handler<LoginInput, LoginOutput> {
     const isValid = await this.verify(request, exists.password);
     if (!isValid) throw new Error("Invalid password");
 
-    return LoginMapper.toOutput(exists);
+    return LoginMapper.toResponse(exists);
   };
 
-  private async verify(request: LoginInput, hashed: string): Promise<boolean> {
+  private async verify(request: LoginRequest, hashed: string): Promise<boolean> {
     return await Bun.password.verify(request.body.password, hashed);
   };
 };
