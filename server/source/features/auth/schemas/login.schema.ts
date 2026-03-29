@@ -1,8 +1,8 @@
 import { t, type Static } from "elysia";
 
 export const LoginBody = t.Object({
-  email: t.String({ format: "email" }),
-  password: t.String({ minLength: 8 }),
+  email: t.String({ format: "email", maxLength: 255 }),
+  password: t.String({ minLength: 8, maxLength: 64 }),
 });
 
 const LoginRequest = t.Object({
