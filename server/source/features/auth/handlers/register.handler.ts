@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { RegisterMapper } from "../mapping/register.mapper";
-import { SearchUserSpecify } from "@features/users/prisma/search.specify";
-import { RegisterUserSpecify } from "@features/users/prisma/register.specify";
+import { SearchUserSpecify } from "@repos/users/search.specify";
+import { RegisterUserSpecify } from "@repos/users/register.specify";
 
 import type { Handler } from "@contracts/handler.contract";
 import type { RegisterRequest } from "../schemas/register.schema";

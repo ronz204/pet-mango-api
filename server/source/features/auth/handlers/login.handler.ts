@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { LoginMapper } from "../mapping/login.mapper";
-import { SearchUserSpecify } from "@features/users/prisma/search.specify";
+import { SearchUserSpecify } from "@repos/users/search.specify";
 
 import type { Handler } from "@contracts/handler.contract";
 import type { LoginRequest } from "../schemas/login.schema";
