@@ -16,9 +16,15 @@ export class RegisterHandler implements Handler<RegisterInput, RegisterOutput> {
     const exists = await this.prisma.user.findFirst(existsQuery);
     if (exists) throw new Error("User already exists");
 
+    request.body.password = await this.hash(request);
+
     const createQuery = new RegisterUserSpecify(request.body).toQuery();
     const created = await this.prisma.user.create(createQuery);
 
     return RegisterMapper.toOutput(created);
+  };
+
+  private async hash(request: RegisterInput): Promise<string> {
+    return await Bun.password.hash(request.body.password);
   };
 };
