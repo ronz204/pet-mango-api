@@ -5,6 +5,7 @@ CREATE SCHEMA IF NOT EXISTS "mango";
 CREATE TABLE "mango"."users" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -14,7 +15,7 @@ CREATE TABLE "mango"."users" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_name_key" ON "mango"."users"("name");
+CREATE UNIQUE INDEX "users_code_key" ON "mango"."users"("code");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "mango"."users"("email");
