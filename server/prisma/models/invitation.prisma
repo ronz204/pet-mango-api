@@ -1,7 +1,5 @@
 model Invitation {
-  id    Int    @id @default(autoincrement())
-  email String // Email of the invitee
-
+  id     Int              @id @default(autoincrement())
   status InvitationStatus @default(PENDING)
 
   inviterId Int // Foreign key to the User who sent the invitation

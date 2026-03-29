@@ -4,7 +4,6 @@ CREATE TYPE "mango"."InvitationStatus" AS ENUM ('PENDING', 'ACCEPTED', 'DECLINED
 -- CreateTable
 CREATE TABLE "mango"."invitations" (
     "id" SERIAL NOT NULL,
-    "email" TEXT NOT NULL,
     "status" "mango"."InvitationStatus" NOT NULL DEFAULT 'PENDING',
     "inviterId" INTEGER NOT NULL,
     "roomId" INTEGER NOT NULL,
