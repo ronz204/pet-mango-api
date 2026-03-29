@@ -8,7 +8,6 @@ CREATE TABLE "mango"."invitations" (
     "status" "mango"."InvitationStatus" NOT NULL DEFAULT 'PENDING',
     "inviterId" INTEGER NOT NULL,
     "roomId" INTEGER NOT NULL,
-    "expiresAt" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "invitations_pkey" PRIMARY KEY ("id")

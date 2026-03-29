@@ -10,7 +10,6 @@ model Invitation {
   roomId Int // Foreign key to the Room being invited to
   room   Room @relation(fields: [roomId], references: [id])
 
-  expiresAt DateTime
   createdAt DateTime @default(now())
 
   @@map("invitations")
