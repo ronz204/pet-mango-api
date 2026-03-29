@@ -3,7 +3,7 @@ import type { UserFindFirstArgs } from "@prisma/models";
 
 interface SpecifyArgs {
   id?: number;
-  code?: string;
+  name?: string;
   email?: string;
 };
 
@@ -14,7 +14,7 @@ export class SearchUserSpecify extends Specify {
     return {
       where: {
         id: this.args.id,
-        code: this.args.code,
+        name: this.args.name,
         email: this.args.email,
       },
     } as const satisfies UserFindFirstArgs;
