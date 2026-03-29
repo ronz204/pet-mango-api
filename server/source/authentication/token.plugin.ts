@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import jwt from "@elysiajs/jwt";
+import { jwt } from "@elysiajs/jwt";
 import { TokenSchema } from "./auth.schema";
 import { AuthResponse401 } from "./auth.schema";
 
@@ -23,8 +23,9 @@ export const TokenPlugin = new Elysia({ name: "token.plugin" })
 
   .macro({
     auth: {
-      response: { 401: AuthResponse401 },
-
+      response: {
+        401: AuthResponse401
+      },
       resolve({ user, status }) {
         if (!user) return status(401, {
           error: "Unauthorized",
