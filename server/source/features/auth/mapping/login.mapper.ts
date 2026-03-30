@@ -1,8 +1,8 @@
 import type { User } from "@prisma/client";
-import type { LoginPayload } from "../schemas/login.schema";
+import type { LoginUserPayload } from "../schemas/login.schema";
 
-export class LoginMapper {
-  public static toResponse(data: User): LoginPayload {
+export class LoginUserMapper {
+  public static toResponse(data: User): LoginUserPayload {
     return { id: data.id };
   };
 };

@@ -1,15 +1,15 @@
 import { PrismaClient } from "@prisma/client";
-import { LoginMapper } from "../mapping/login.mapper";
+import { LoginUserMapper } from "../mapping/login.mapper";
 import { UserExistsSpecify } from "@dal/users/exists.specify";
 
 import type { Handler } from "@contracts/handler.contract";
-import type { LoginRequest } from "../schemas/login.schema";
-import type { LoginPayload } from "../schemas/login.schema";
+import type { LoginUserRequest } from "../schemas/login.schema";
+import type { LoginUserPayload } from "../schemas/login.schema";
 
-export class LoginHandler implements Handler<LoginRequest, LoginPayload> {
+export class LoginUserHandler implements Handler<LoginUserRequest, LoginUserPayload> {
   constructor(private readonly prisma: PrismaClient) {};
 
-  public async handle(request: LoginRequest): Promise<LoginPayload> {
+  public async handle(request: LoginUserRequest): Promise<LoginUserPayload> {
     const existsQuery = new UserExistsSpecify(request.body).toQuery();
 
     const exists = await this.prisma.user.findFirst(existsQuery);
@@ -18,10 +18,10 @@ export class LoginHandler implements Handler<LoginRequest, LoginPayload> {
     const isValid = await this.verify(request, exists.password);
     if (!isValid) throw new Error("Invalid password");
 
-    return LoginMapper.toResponse(exists);
+    return LoginUserMapper.toResponse(exists);
   };
 
-  private async verify(request: LoginRequest, hashed: string): Promise<boolean> {
+  private async verify(request: LoginUserRequest, hashed: string): Promise<boolean> {
     return await Bun.password.verify(request.body.password, hashed);
   };
 };

@@ -1,16 +1,16 @@
 import { Elysia } from "elysia";
 import { TokenPlugin } from "@auth/token.plugin";
-import { LoginBody } from "../schemas/login.schema";
 import { PrismaPlugin } from "@database/prisma.plugin";
-import { LoginResponse } from "../schemas/login.schema";
-import { LoginHandler } from "../handlers/login.handler";
+import { LoginUserBody } from "../schemas/login.schema";
+import { LoginUserResponse } from "../schemas/login.schema";
+import { LoginUserHandler } from "../handlers/login.handler";
 
-export const LoginPlugin = new Elysia({ name: "login.plugin" })
+export const LoginUserPlugin = new Elysia({ name: "login.plugin" })
   .use(PrismaPlugin)
   .use(TokenPlugin)
 
   .derive(({ prisma }) => ({
-    loginH: new LoginHandler(prisma),
+    loginH: new LoginUserHandler(prisma),
   }))
 
   .post("/login", async ({ body, status, jwt, loginH }) => {
@@ -18,6 +18,6 @@ export const LoginPlugin = new Elysia({ name: "login.plugin" })
     const token = await jwt.sign(response);
     return status(200, { token });
   }, {
-    body: LoginBody,
-    response: { 200: LoginResponse },
+    body: LoginUserBody,
+    response: { 200: LoginUserResponse },
   });

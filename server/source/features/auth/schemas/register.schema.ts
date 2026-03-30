@@ -1,22 +1,23 @@
 import { t, type Static } from "elysia";
 
-export const RegisterBody = t.Object({
+export const RegisterUserBody = t.Object({
   name: t.String({ minLength: 4, maxLength: 20 }),
   email: t.String({ format: "email", maxLength: 255 }),
   password: t.String({ minLength: 8, maxLength: 64 }),
 });
 
-const RegisterRequest = t.Object({
-  body: RegisterBody,
+export const RegisterUserRequest = t.Object({
+  body: RegisterUserBody,
 });
 
-const RegisterPayload = t.Object({
+export const RegisterUserPayload = t.Object({
   id: t.Number(),
 });
 
-export const RegisterResponse = t.Object({
+export const RegisterUserResponse = t.Object({
   token: t.String(),
 });
 
-export type RegisterRequest = Static<typeof RegisterRequest>;
-export type RegisterPayload = Static<typeof RegisterPayload>;
+export type RegisterUserRequest = Static<typeof RegisterUserRequest>;
+export type RegisterUserPayload = Static<typeof RegisterUserPayload>;
+export type RegisterUserResponse = Static<typeof RegisterUserResponse>;
