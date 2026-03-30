@@ -29,6 +29,7 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
 
+      "@dal/*": ["./source/dal/*"],
       "@auth/*": ["./source/auth/*"],
       "@repos/*": ["./source/repos/*"],
       "@shared/*": ["./source/shared/*"],

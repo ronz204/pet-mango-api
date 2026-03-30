@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { LoginMapper } from "../mapping/login.mapper";
-import { SearchUserSpecify } from "@repos/users/search.specify";
+import { UserExistsSpecify } from "@dal/users/exists.specify";
 
 import type { Handler } from "@contracts/handler.contract";
 import type { LoginRequest } from "../schemas/login.schema";
@@ -10,7 +10,7 @@ export class LoginHandler implements Handler<LoginRequest, LoginPayload> {
   constructor(private readonly prisma: PrismaClient) {};
 
   public async handle(request: LoginRequest): Promise<LoginPayload> {
-    const existsQuery = new SearchUserSpecify(request.body).toQuery();
+    const existsQuery = new UserExistsSpecify(request.body).toQuery();
 
     const exists = await this.prisma.user.findFirst(existsQuery);
     if (!exists) throw new Error("User not found");
