@@ -1,15 +1,15 @@
 import { Elysia } from "elysia";
 import { TokenPlugin } from "@auth/token.plugin";
-import { ReadResponse } from "../schemas/read.schema";
-import { ReadHandler } from "../handlers/read.handler";
 import { PrismaPlugin } from "@database/prisma.plugin";
+import { ReadProfileResponse } from "../schemas/read.schema";
+import { ReadProfileHandler } from "../handlers/read.handler";
 
 export const ReadPlugin = new Elysia({ name: "read.profile" })
   .use(PrismaPlugin)
   .use(TokenPlugin)
 
   .derive(({ prisma }) => ({
-    readH: new ReadHandler(prisma),
+    readH: new ReadProfileHandler(prisma),
   }))
 
   .get("/me", async ({ status, user, readH }) => {
@@ -18,6 +18,6 @@ export const ReadPlugin = new Elysia({ name: "read.profile" })
   }, {
     auth: true,
     response: {
-      200: ReadResponse,
+      200: ReadProfileResponse,
     },
   });
