@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { TokenPlugin } from "@plugins/token.plugin";
+import { TokenPlugin } from "@auth/token.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { RegisterBody } from "../schemas/register.schema";
 import { RegisterResponse } from "../schemas/register.schema";

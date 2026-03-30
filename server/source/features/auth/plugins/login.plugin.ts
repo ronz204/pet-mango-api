@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
+import { TokenPlugin } from "@auth/token.plugin";
 import { LoginBody } from "../schemas/login.schema";
-import { TokenPlugin } from "@plugins/token.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { LoginResponse } from "../schemas/login.schema";
 import { LoginHandler } from "../handlers/login.handler";
