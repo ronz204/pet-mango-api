@@ -10,8 +10,9 @@ export class SearchUsersHandler implements Handler<SearchUsersRequest, SearchUse
   constructor(private readonly prisma: PrismaClient) {};
 
   public async handle(request: SearchUsersRequest): Promise<SearchUsersResponse> {
-    const payload = { ...request.query, id: request.user };
-    const searchQuery = new SearchUsersSpecify(payload).toQuery();
+    const searchQuery = new SearchUsersSpecify({
+      ...request.query, id: request.user
+    }).toQuery();
 
     const users = await this.prisma.user.findMany(searchQuery);
     return SearchUsersMapper.toResponse(users);

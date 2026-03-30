@@ -11,7 +11,7 @@ export class UpdateProfileHandler implements Handler<Request, Response> {
 
   public async handle(request: Request): Promise<Response> {
     const updateQuery = new UpdateUserSpecify({
-      id: request.user, ...request.body
+      ...request.body, id: request.user
     }).toQuery();
 
     const user = await this.prisma.user.update(updateQuery);
