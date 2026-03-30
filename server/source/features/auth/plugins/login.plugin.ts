@@ -5,7 +5,7 @@ import { LoginUserBody } from "../schemas/login.schema";
 import { LoginUserResponse } from "../schemas/login.schema";
 import { LoginUserHandler } from "../handlers/login.handler";
 
-export const LoginUserPlugin = new Elysia({ name: "login.plugin" })
+export const LoginPlugin = new Elysia({ name: "login.plugin" })
   .use(PrismaPlugin)
   .use(TokenPlugin)
 

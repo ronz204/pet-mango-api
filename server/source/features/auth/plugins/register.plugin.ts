@@ -5,7 +5,7 @@ import { RegisterUserBody } from "../schemas/register.schema";
 import { RegisterUserResponse } from "../schemas/register.schema";
 import { RegisterUserHandler } from "../handlers/register.handler";
 
-export const RegisterUserPlugin = new Elysia({ name: "register.plugin" })
+export const RegisterPlugin = new Elysia({ name: "register.plugin" })
   .use(PrismaPlugin)
   .use(TokenPlugin)
 
