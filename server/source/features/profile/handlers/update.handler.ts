@@ -1,0 +1,20 @@
+import { PrismaClient } from "@prisma/client";
+import { UpdateUserSpecify } from "@dal/users/update.specify";
+import { UpdateProfileMapper } from "../mapping/update.mapper";
+
+import type { Handler } from "@contracts/handler.contract";
+import type { UpdateProfileRequest as Request } from "../schemas/update.schema";
+import type { UpdateProfileResponse as Response } from "../schemas/update.schema";
+
+export class UpdateProfileHandler implements Handler<Request, Response> {
+  constructor(private readonly prisma: PrismaClient) {};
+
+  public async handle(request: Request): Promise<Response> {
+    const updateQuery = new UpdateUserSpecify({
+      id: request.user, ...request.body
+    }).toQuery();
+
+    const user = await this.prisma.user.update(updateQuery);
+    return UpdateProfileMapper.toResponse(user);
+  };
+};
