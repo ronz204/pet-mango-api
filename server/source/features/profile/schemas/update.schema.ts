@@ -1,8 +1,8 @@
 import { t, type Static } from "elysia";
 
 export const UpdateProfileBody = t.Object({
-  name: t.String({ minLength: 4, maxLength: 20 }),
-  password: t.String({ minLength: 8, maxLength: 64 }),
+  name: t.Optional(t.String({ minLength: 4, maxLength: 20 })),
+  password: t.Optional(t.String({ minLength: 8, maxLength: 64 })),
 });
 
 export const UpdateProfileRequest = t.Object({

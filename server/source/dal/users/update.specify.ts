@@ -4,8 +4,8 @@ import { ExtractUserSpecify } from "./extract.specify";
 
 interface SpecifyArgs {
   id: number;
-  name: string;
-  password: string;
+  name?: string;
+  password?: string;
 };
 
 export class UpdateUserSpecify extends Specify {
