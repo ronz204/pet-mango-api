@@ -5,7 +5,9 @@ import { SearchUsersQuery } from "../schemas/search.schema";
 import { SearchUsersResponse } from "../schemas/search.schema";
 import { SearchUsersHandler } from "../handlers/search.handler";
 
-export const SearchUsersPlugin = new Elysia({ name: "search.users" })
+const name: string = "search.users.plugin";
+
+export const SearchUsersPlugin = new Elysia({ name })
   .use(PrismaPlugin)
   .use(TokenPlugin)
 
@@ -13,7 +15,7 @@ export const SearchUsersPlugin = new Elysia({ name: "search.users" })
     searchH: new SearchUsersHandler(prisma),
   }))
 
-  .get("/search", async ({ status, query, searchH, user }) => {
+  .get("/", async ({ status, query, searchH, user }) => {
     const response = await searchH.handle({ query, user });
     return status(200, response);
   }, {
