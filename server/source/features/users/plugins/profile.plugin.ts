@@ -15,7 +15,7 @@ export const ProfileUserPlugin = new Elysia({ name })
   }))
 
   .get("/me", async ({ status, user, profileH }) => {
-    const response = await profileH.handle({ id: user });
+    const response = await profileH.handle({ user });
     return status(200, response);
   }, {
     auth: true,

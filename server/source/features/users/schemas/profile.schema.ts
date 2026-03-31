@@ -1,7 +1,7 @@
 import { t, type Static } from "elysia";
 
 export const ProfileUserRequest = t.Object({
-  id: t.Number(),
+  user: t.Number(),
 });
 
 export const ProfileUserResponse = t.Object({

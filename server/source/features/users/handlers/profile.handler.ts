@@ -11,7 +11,7 @@ export class ProfileUserHandler implements Handler<Request, Reseponse> {
   constructor(private readonly prisma: PrismaClient) {};
 
   public async handle(request: Request): Promise<Reseponse> {
-    const extractQuery = new ExtractUserSpecify({ id: request.id }).toQuery();
+    const extractQuery = new ExtractUserSpecify({ id: request.user }).toQuery();
 
     const profile = await this.prisma.user.findFirst(extractQuery);
     if (!profile) throw new Error("User not found");
