@@ -5,7 +5,7 @@ import { DetailsRoomParams } from "../schemas/details.schema";
 import { DetailsRoomResponse } from "../schemas/details.schema";
 import { DetailsRoomHandler } from "../handlers/details.handler";
 
-const name: string = "detail.room.plugin";
+const name: string = "details.room.plugin";
 
 export const DetailsRoomPlugin = new Elysia({ name })
   .use(PrismaPlugin)
