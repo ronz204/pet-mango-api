@@ -15,16 +15,13 @@ export class JoinRoomHandler implements Handler<Request, Response> {
     const roomId = request.params.roomId;
     const userId = request.user;
 
-    // Check if room exists
     const room = await this.prisma.room.findFirst({ where: { id: roomId }});
     if (!room) throw new Error("Room not found");
 
-    // Check if room is public
     if (room.visibility !== RoomVisibility.PUBLIC) {
       throw new Error("Cannot join private room");
     };
 
-    // Check if user is already a member
     const existsQuery = new MemberExistsSpecify({ userId, roomId }).toQuery();
     
     const isMember = await this.prisma.member.count(existsQuery);
