@@ -9,8 +9,8 @@ const RoomDto = t.Object({
 
 export const SearchRoomsQuery = t.Object({
   isOwn: t.Boolean({ default: false }),
-  visibility: t.Optional(t.Enum(RoomVisibility)),
   name: t.Optional(t.String({ minLength: 1, maxLength: 50 })),
+  visibility: t.Optional(t.Enum(RoomVisibility, { default: RoomVisibility.PUBLIC })),
 });
 
 export const SearchRoomsRequest = t.Object({
