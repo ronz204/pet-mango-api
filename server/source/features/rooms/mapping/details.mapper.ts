@@ -16,7 +16,13 @@ export class DetailsRoomMapper {
       members: data.members.map(member => ({
         id: member.id,
         userId: member.userId,
-        name: member.user.name,
+        userName: member.user.name,
+      })),
+      messages: data.messages.map(message => ({
+        id: message.id,
+        content: message.content,
+        senderId: message.senderId,
+        senderName: message.sender.name,
       })),
     };
   };

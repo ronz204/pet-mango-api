@@ -17,6 +17,11 @@ export class DetailsRoomSpecify extends Specify {
             user: true
           },
         },
+        messages: {
+          include: {
+            sender: true,
+          },
+        },
       },
     } as const satisfies RoomFindFirstArgs;
   };
