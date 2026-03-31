@@ -5,7 +5,7 @@ interface SpecifyArgs {
   roomId: number;
 };
 
-export class RoomDetailsSpecify extends Specify {
+export class DetailsRoomSpecify extends Specify {
   constructor(private readonly args: SpecifyArgs) {super()};
 
   public override toQuery() {
