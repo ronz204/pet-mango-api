@@ -15,7 +15,7 @@ export const SearchRoomsPlugin = new Elysia({ name })
     searchH: new SearchRoomsHandler(prisma),
   }))
 
-  .get("/", async ({ query, status, user, searchH }) => {
+  .get("/search", async ({ query, status, user, searchH }) => {
     const response = await searchH.handle({ query, user });
     return status(200, response);
   }, {

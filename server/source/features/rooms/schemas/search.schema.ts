@@ -1,4 +1,3 @@
-import { RoomVisibility } from "@prisma/client";
 import { t, type Static } from "elysia";
 
 const RoomDto = t.Object({
@@ -8,9 +7,7 @@ const RoomDto = t.Object({
 });
 
 export const SearchRoomsQuery = t.Object({
-  isOwn: t.Boolean({ default: false }),
   name: t.Optional(t.String({ minLength: 1, maxLength: 50 })),
-  visibility: t.Optional(t.Enum(RoomVisibility, { default: RoomVisibility.PUBLIC })),
 });
 
 export const SearchRoomsRequest = t.Object({
