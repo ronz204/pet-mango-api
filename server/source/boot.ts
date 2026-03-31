@@ -1,8 +1,8 @@
 import { Elysia } from "elysia";
-import { AuthPlugin } from "@features/auth/plugin";
 import { UsersPlugin } from "@features/users/plugin";
 import { RoomsPlugin } from "@features/rooms/plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
+import { AuthPlugin } from "@features/identity/plugin";
 
 const app = new Elysia({ prefix: "/api" })
   .use(HealthPlugin)
