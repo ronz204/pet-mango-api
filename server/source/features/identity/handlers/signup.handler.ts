@@ -1,13 +1,13 @@
 import { PrismaClient } from "@prisma/client";
+import { SignUpMapper } from "../mapping/signup.mapper";
 import { UserExistsSpecify } from "@dal/users/exists.specify";
-import { RegisterUserMapper } from "../mapping/register.mapper";
 import { RegisterUserSpecify } from "@dal/users/register.specify";
 
 import type { Handler } from "@contracts/handler.contract";
-import type { RegisterUserRequest as Request } from "../schemas/register.schema";
-import type { RegisterUserPayload as Payload } from "../schemas/register.schema";
+import type { SignUpRequest as Request } from "../schemas/signup.schema";
+import type { SignUpPayload as Payload } from "../schemas/signup.schema";
 
-export class RegisterUserHandler implements Handler<Request, Payload> {
+export class SignUpHandler implements Handler<Request, Payload> {
   constructor(private readonly prisma: PrismaClient) {};
 
   public async handle(request: Request): Promise<Payload> {
@@ -21,7 +21,7 @@ export class RegisterUserHandler implements Handler<Request, Payload> {
     }).toQuery();
 
     const created = await this.prisma.user.create(createQuery);
-    return RegisterUserMapper.toResponse(created);
+    return SignUpMapper.toResponse(created);
   };
 
   private async hash(request: Request): Promise<string> {

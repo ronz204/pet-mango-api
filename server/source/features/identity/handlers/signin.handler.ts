@@ -1,12 +1,12 @@
 import { PrismaClient } from "@prisma/client";
-import { LoginUserMapper } from "../mapping/login.mapper";
+import { SignInMapper } from "../mapping/signin.mapper";
 import { UserExistsSpecify } from "@dal/users/exists.specify";
 
 import type { Handler } from "@contracts/handler.contract";
-import type { LoginUserRequest as Request } from "../schemas/login.schema";
-import type { LoginUserPayload as Payload } from "../schemas/login.schema";
+import type { SignInRequest as Request } from "../schemas/signin.schema";
+import type { SignInPayload as Payload } from "../schemas/signin.schema";
 
-export class LoginUserHandler implements Handler<Request, Payload> {
+export class SignInHandler implements Handler<Request, Payload> {
   constructor(private readonly prisma: PrismaClient) {};
 
   public async handle(request: Request): Promise<Payload> {
@@ -18,7 +18,7 @@ export class LoginUserHandler implements Handler<Request, Payload> {
     const isValid = await this.verify(request, exists.password);
     if (!isValid) throw new Error("Invalid password");
 
-    return LoginUserMapper.toResponse(exists);
+    return SignInMapper.toResponse(exists);
   };
 
   private async verify(request: Request, hashed: string): Promise<boolean> {

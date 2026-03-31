@@ -1,11 +1,10 @@
-import { Elysia, type ElysiaConfig } from "elysia";
-import { LoginUserPlugin } from "./plugins/login.plugin";
-import { RegisterUserPlugin } from "./plugins/register.plugin";
+import { Elysia } from "elysia";
+import { SignInPlugin } from "./plugins/signin.plugin";
+import { SignUpPlugin } from "./plugins/signup.plugin";
 
-const config: ElysiaConfig<"/auth"> = {
-  prefix: "/auth", name: "auth.plugin"
-};
+const prefix: string = "/auth";
+const name: string = "auth.plugin";
 
-export const AuthPlugin = new Elysia(config)
-  .use(LoginUserPlugin)
-  .use(RegisterUserPlugin);
+export const AuthPlugin = new Elysia({ name, prefix })
+  .use(SignInPlugin)
+  .use(SignUpPlugin);
