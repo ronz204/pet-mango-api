@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { SignUpMapper } from "../mapping/signup.mapper";
 import { UserExistsSpecify } from "@dal/users/exists.specify";
-import { RegisterUserSpecify } from "@dal/users/register.specify";
+import { CreateUserSpecify } from "@dal/users/create.specify";
 
 import type { Handler } from "@contracts/handler.contract";
 import type { SignUpRequest as Request } from "../schemas/signup.schema";
@@ -16,7 +16,7 @@ export class SignUpHandler implements Handler<Request, Payload> {
     const exists = await this.prisma.user.findFirst(existsQuery);
     if (exists) throw new Error("User already exists");
 
-    const createQuery = new RegisterUserSpecify({
+    const createQuery = new CreateUserSpecify({
       ...request.body, password: await this.hash(request)
     }).toQuery();
 

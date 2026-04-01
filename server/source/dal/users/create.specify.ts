@@ -7,7 +7,7 @@ interface SpecifyArgs {
   password: string;
 };
 
-export class RegisterUserSpecify extends Specify {
+export class CreateUserSpecify extends Specify {
   constructor(private readonly args: SpecifyArgs) {super()};
 
   public override toQuery() {
