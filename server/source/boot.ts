@@ -4,6 +4,7 @@ import { UsersPlugin } from "@features/users/plugin";
 import { RoomsPlugin } from "@features/rooms/plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
 import { AuthPlugin } from "@features/identity/plugin";
+import { InvitesPlugin } from "@features/invites/plugin";
 
 const app = new Elysia({ prefix: "/api" })
   .use(openapi())
@@ -11,6 +12,7 @@ const app = new Elysia({ prefix: "/api" })
   .use(AuthPlugin)
   .use(UsersPlugin)
   .use(RoomsPlugin)
+  .use(InvitesPlugin)
   .listen(process.env.PORT!);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
