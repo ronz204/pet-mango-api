@@ -11,10 +11,7 @@ export class SearchRoomsHandler implements Handler<Request, Response> {
 
   public async handle (request: Request): Promise<Response> {
     const searchQuery = new SearchRoomsSpecify({
-      ...request.query,
-      userId: request.user,
-      isOwn: request.isOwn,
-      visibility: request.visible
+      ...request.query, userId: request.user
     }).toQuery();
 
     const rooms = await this.prisma.room.findMany(searchQuery);

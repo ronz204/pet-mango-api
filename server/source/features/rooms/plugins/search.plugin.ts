@@ -1,5 +1,4 @@
 import { Elysia } from "elysia";
-import { RoomVisibility } from "@prisma/enums";
 import { TokenPlugin } from "@auth/token.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { SearchRoomsQuery } from "../schemas/search.schema";
@@ -17,7 +16,7 @@ export const SearchRoomsPlugin = new Elysia({ name })
   }))
 
   .get("/", async ({ query, status, user, searchH }) => {
-    const response = await searchH.handle({ query, user, isOwn: true });
+    const response = await searchH.handle({ query, user });
     return status(200, response);
   }, {
     auth: true,
