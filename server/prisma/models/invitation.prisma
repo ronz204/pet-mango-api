@@ -2,8 +2,8 @@ model Invitation {
   id     Int              @id @default(autoincrement())
   status InvitationStatus @default(PENDING)
 
-  inviterId Int // Foreign key to the User who sent the invitation
-  inviter   User @relation(fields: [inviterId], references: [id])
+  inviteeId Int // Foreign key to the User who received the invitation
+  invitee   User @relation(fields: [inviteeId], references: [id])
 
   roomId Int // Foreign key to the Room being invited to
   room   Room @relation(fields: [roomId], references: [id])
