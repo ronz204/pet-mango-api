@@ -18,15 +18,13 @@ export class LeaveRoomHandler implements Handler<Request, Response> {
     if (!room) throw new Error("Room not found");
 
     const existsQuery = new MemberExistsSpecify({ userId, roomId }).toQuery();
-    const isMember = await this.prisma.member.count(existsQuery);
 
-    if (isMember === 0) {
-      throw new Error("You are not a member of this room");
-    }
+    const isMember = await this.prisma.member.count(existsQuery);
+    if (isMember === 0) throw new Error("You are not a member of this room");
 
     const deleteQuery = new DeleteMemberSpecify({ userId, roomId }).toQuery();
+    
     await this.prisma.member.delete(deleteQuery);
-
     return LeaveRoomMapper.toResponse();
   };
 };
