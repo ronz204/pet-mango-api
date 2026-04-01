@@ -1,6 +1,5 @@
 import type { UserUpdateArgs } from "@prisma/models";
 import { Specify } from "@contracts/specify.contract";
-import { ExtractUserSpecify } from "./extract.specify";
 
 interface SpecifyArgs {
   id: number;
@@ -12,10 +11,10 @@ export class UpdateUserSpecify extends Specify {
   constructor(private readonly args: SpecifyArgs) {super()};
 
   public override toQuery() {
-    const extract = new ExtractUserSpecify({ id: this.args.id });
-
     return {
-      ...extract.toQuery(),
+      where :{
+        id: this.args.id,
+      },
       data: {
         name: this.args.name,
         password: this.args.password,
