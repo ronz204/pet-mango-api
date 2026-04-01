@@ -1,7 +1,7 @@
 import { Specify } from "@contracts/specify.contract";
 import type { MemberCountArgs } from "@prisma/models";
 
-export interface SpecifyArgs {
+interface SpecifyArgs {
   userId: number;
   roomId: number;
 };
