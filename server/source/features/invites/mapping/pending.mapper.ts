@@ -17,6 +17,6 @@ export class PendingInvitesMapper {
         roomName: invitation.room.name,
         createdAt: invitation.createdAt,
       })),
-    };
+    } as const;
   };
 };
