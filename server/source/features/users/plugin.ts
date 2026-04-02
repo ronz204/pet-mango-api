@@ -10,9 +10,10 @@ import { RefreshResponse } from "./refresh/refresh.schema";
 import { ProfileHandler } from "./profile/profile.handler";
 import { ProfileResponse } from "./profile/profile.schema";
 
+const prefix: string = "/users";
 const name: string = "users.plugin";
 
-export const UsersPlugin = new Elysia({ name })
+export const UsersPlugin = new Elysia({ name, prefix })
   .use(PrismaPlugin)
   .use(TokenPlugin)
   
