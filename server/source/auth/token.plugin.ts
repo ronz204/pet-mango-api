@@ -1,8 +1,6 @@
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
-import { AuthSchema } from "./auth.schema";
-import { AuthHeaders } from "./auth.schema";
-import { AuthResponse } from "./auth.schema";
+import { AuthHeaders, AuthSchema, AuthResponse } from "./auth.schema";
 
 export const TokenPlugin = new Elysia({ name: "token.plugin" })
   .use(jwt({
@@ -13,7 +11,7 @@ export const TokenPlugin = new Elysia({ name: "token.plugin" })
   }))
 
   .macro({
-    auth: {
+    isAuth: {
       headers: AuthHeaders,
       response: AuthResponse,
       resolve: async ({ status, headers, jwt }) => {
@@ -28,7 +26,7 @@ export const TokenPlugin = new Elysia({ name: "token.plugin" })
         const payload = await jwt.verify(auth.slice(7));
         if (!payload) return status401;
 
-        return { user: payload.id };
+        return { userId: payload.userId };
       },
     },
   });

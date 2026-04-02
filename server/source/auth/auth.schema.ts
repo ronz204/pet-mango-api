@@ -1,7 +1,7 @@
 import { t } from "elysia";
 
 export const AuthSchema = t.Object({
-  id: t.Number(),
+  userId: t.Number(),
 });
 
 export const AuthHeaders = t.Object({
