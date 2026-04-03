@@ -14,7 +14,7 @@ import { SignUpResponse } from "./signup/signup.schema";
 const prefix: string = "/auth";
 const name: string = "auth.plugin";
 
-export const IdentityPlugin = new Elysia({ name, prefix })
+export const AuthPlugin = new Elysia({ name, prefix })
   .use(PrismaPlugin)
   .use(TokenPlugin)
   

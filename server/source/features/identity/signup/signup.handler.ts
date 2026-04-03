@@ -11,11 +11,14 @@ export class SignUpHandler {
     const exists = await this.repo.exists({ email: request.body.email });
     if (exists) throw new Error("User already exists");
 
-     const created = await this.repo.create({ data: request.body });
-     return SignUpMapper.toResponse(created);
+    const hashed = await this.hash(request);
+    const created = await this.repo.create({
+      data: { ...request.body, password: hashed }});
+
+    return SignUpMapper.toResponse(created);
   };
 
-  private async verify(request: SignUpRequest, hashed: string): Promise<boolean> {
-    return await Bun.password.verify(request.body.password, hashed);
+  private async hash(request: SignUpRequest): Promise<string> {
+    return await Bun.password.hash(request.body.password);
   };
 };
