@@ -27,4 +27,8 @@ export namespace RoomArgs {
     roomId: number;
     inviteeId: number;
   };
+
+  export interface Invitees {
+    roomId: number;
+  };
 };

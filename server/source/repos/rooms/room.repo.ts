@@ -48,4 +48,10 @@ export class RoomRepository {
       },
     }});
   };
+
+  public async invitees(args: RoomArgs.Invitees) {
+    return await this.prisma.user.findMany({ where: {
+      members: { none: { roomId: args.roomId }
+    }}});
+  };
 };
