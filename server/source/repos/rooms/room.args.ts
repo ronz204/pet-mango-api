@@ -1,4 +1,4 @@
-export namespace RepoArgs {
+export namespace RoomArgs {
   export interface Details {
     roomId: number;
   };

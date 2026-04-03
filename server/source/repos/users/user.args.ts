@@ -1,4 +1,4 @@
-export namespace RepoArgs {
+export namespace UserArgs {
   export interface Exists {
     id?: number;
     name?: string;
