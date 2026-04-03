@@ -16,6 +16,7 @@ export class DetailsMapper {
         id: member.id,
         userId: member.userId,
         userName: member.user.name,
+        userRole: member.role,
       })),
       messages: data.messages.map(message => ({
         id: message.id,

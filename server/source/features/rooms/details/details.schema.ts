@@ -1,9 +1,11 @@
 import { t, type Static } from "elysia";
+import { MemberRole } from "@prisma/enums";
 
 const MemberDto = t.Object({
   id: t.Number(),
   userId: t.Number(),
   userName: t.String(),
+  userRole: t.Enum(MemberRole),
 });
 
 const MessageDto = t.Object({
