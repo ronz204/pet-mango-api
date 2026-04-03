@@ -1,3 +1,5 @@
+name: mango-api
+
 services:
   redis:
     image: redis:alpine3.23
@@ -27,3 +29,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+volumes:
+  mango-data:
+    driver: local
+    name: mango-data
+  redis-data:
+    driver: local
+    name: redis-data
+
+networks:
+  mango-network:
+    driver: bridge
+    name: mango-network

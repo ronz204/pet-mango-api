@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.50",
   "scripts": {
-    "start": "bun run --watch source/boot.ts",
+    "dev": "bun run --watch source/boot.ts",
     "prisma:studio": "bunx --bun prisma studio",
     "prisma:generate": "bunx --bun prisma generate",
     "prisma:migrate": "bunx --bun prisma migrate dev"
