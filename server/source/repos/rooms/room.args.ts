@@ -12,4 +12,14 @@ export namespace RoomArgs {
     name: string;
     ownerId: number;
   };
+
+  export interface isMember {
+    roomId: number;
+    userId: number;
+  };
+
+  export interface Leave {
+    roomId: number;
+    userId: number;
+  };
 };

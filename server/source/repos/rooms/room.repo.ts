@@ -11,6 +11,12 @@ export class RoomRepository {
     }});
   };
 
+  public async isMember(args: RoomArgs.isMember) {
+    return await this.prisma.member.findFirst({
+      where: { userId: args.userId, roomId: args.roomId }
+    });
+  };
+
   public async details(args: RoomArgs.Details) {
     return await this.prisma.room.findUnique({
       where: { id: args.roomId },
@@ -18,7 +24,13 @@ export class RoomRepository {
         members: { include: { user: true }},
         messages: { include: { sender: true }},
     }});
-  }
+  };
+
+  public async leave(args: RoomArgs.Leave) {
+    return await this.prisma.member.delete({ where:
+      { userId_roomId: { userId: args.userId, roomId: args.roomId }}
+    });
+  };
 
   public async create(args: RoomArgs.Create) {
     return await this.prisma.room.create({ data: {
