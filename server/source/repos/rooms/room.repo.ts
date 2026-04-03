@@ -11,6 +11,15 @@ export class RoomRepository {
     }});
   };
 
+  public async details(args: RepoArgs.Details) {
+    return await this.prisma.room.findUnique({
+      where: { id: args.roomId },
+      include: {
+        members: { include: { user: true }},
+        messages: { include: { sender: true }},
+    }});
+  }
+
   public async create(args: RepoArgs.Create) {
     return await this.prisma.room.create({ data: {
       name: args.name, members: {

@@ -1,4 +1,8 @@
 export namespace RepoArgs {
+  export interface Details {
+    roomId: number;
+  };
+
   export interface Exists {
     id?: number;
     name?: string;
