@@ -13,7 +13,7 @@ export namespace RoomArgs {
     ownerId: number;
   };
 
-  export interface isMember {
+  export interface IsMember {
     roomId: number;
     userId: number;
   };
@@ -21,5 +21,10 @@ export namespace RoomArgs {
   export interface Leave {
     roomId: number;
     userId: number;
+  };
+
+  export interface Invite {
+    roomId: number;
+    inviteeId: number;
   };
 };

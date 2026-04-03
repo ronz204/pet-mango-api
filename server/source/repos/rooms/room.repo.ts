@@ -11,10 +11,16 @@ export class RoomRepository {
     }});
   };
 
-  public async isMember(args: RoomArgs.isMember) {
+  public async isMember(args: RoomArgs.IsMember) {
     return await this.prisma.member.findFirst({
       where: { userId: args.userId, roomId: args.roomId }
     });
+  };
+
+  public async invite(args: RoomArgs.Invite) {
+    return await this.prisma.invitation.create({ data: {
+      roomId: args.roomId, inviteeId: args.inviteeId,
+    }});
   };
 
   public async details(args: RoomArgs.Details) {
