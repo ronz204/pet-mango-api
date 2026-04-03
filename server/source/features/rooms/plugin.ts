@@ -3,6 +3,10 @@ import { TokenPlugin } from "@auth/token.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { RoomRepository } from "@repos/rooms/room.repo";
 
+import { LeaveParams } from "./leave/leave.schema";
+import { LeaveHandler } from "./leave/leave.handler";
+import { LeaveResponse } from "./leave/leave.schema";
+
 import { CreateBody } from "./create/create.schema";
 import { CreateHandler } from "./create/create.handler";
 import { CreateResponse } from "./create/create.schema";
@@ -20,10 +24,11 @@ export const RoomsPlugin = new Elysia({ name, prefix })
 
   .derive(({ prisma }) => {
     const repo = new RoomRepository(prisma);
+    const leaveH = new LeaveHandler(repo);
     const createH = new CreateHandler(repo);
     const detailsH = new DetailsHandler(repo);
 
-    return { createH, detailsH };
+    return { createH, detailsH, leaveH };
   })
 
 
@@ -46,5 +51,16 @@ export const RoomsPlugin = new Elysia({ name, prefix })
     params: DetailsParams,
     response: {
       200: DetailsResponse
+    },
+  })
+  
+  .post("/:roomId/leave", async ({ status, params, userId, leaveH }) => {
+    const response = await leaveH.handle({ params, userId });
+    return status(200, response);
+  }, {
+    isAuth: true,
+    params: LeaveParams,
+    response: {
+      200: LeaveResponse
     },
   });
