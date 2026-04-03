@@ -7,6 +7,10 @@ import { SendBody } from "./send/send.schema";
 import { SendHandler } from "./send/send.handler";
 import { SendResponse } from "./send/send.schema";
 
+import { InviteesParams } from "./invitees/invitees.schema";
+import { InviteesHandler } from "./invitees/invitees.handler";
+import { InviteesResponse } from "./invitees/invitees.schema";
+
 const prefix: string = "/invitations";
 const name: string = "invitations.plugin";
 
@@ -17,7 +21,8 @@ export const InvitesPlugin = new Elysia({ name, prefix })
   .derive(({ prisma }) => {
     const repo = new RoomRepository(prisma);
     const sendH = new SendHandler(repo);
-    return { sendH };
+    const inviteesH = new InviteesHandler(repo);
+    return { sendH, inviteesH };
   })
 
   .post("/send", async ({ status, body, userId, sendH }) => {
@@ -28,5 +33,16 @@ export const InvitesPlugin = new Elysia({ name, prefix })
     body: SendBody,
     response: {
       200: SendResponse
+    },
+  })
+
+  .get("/:roomId", async ({ status, params, inviteesH }) => {
+    const response = await inviteesH.handle({ params });
+    return status(200, response);
+  }, {
+    isAuth: true,
+    params: InviteesParams,
+    response: {
+      200: InviteesResponse
     },
   });
