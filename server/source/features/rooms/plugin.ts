@@ -7,6 +7,10 @@ import { CreateBody } from "./create/create.schema";
 import { CreateHandler } from "./create/create.handler";
 import { CreateResponse } from "./create/create.schema";
 
+import { DetailsParams } from "./details/details.schema";
+import { DetailsHandler } from "./details/details.handler";
+import { DetailsResponse } from "./details/details.schema";
+
 const prefix: string = "/rooms";
 const name: string = "rooms.plugin";
 
@@ -17,8 +21,9 @@ export const RoomsPlugin = new Elysia({ name, prefix })
   .derive(({ prisma }) => {
     const repo = new RoomRepository(prisma);
     const createH = new CreateHandler(repo);
+    const detailsH = new DetailsHandler(repo);
 
-    return { createH };
+    return { createH, detailsH };
   })
 
 
@@ -30,5 +35,16 @@ export const RoomsPlugin = new Elysia({ name, prefix })
     body: CreateBody,
     response: {
       200: CreateResponse
+    },
+  })
+  
+  .get("/:roomId", async ({ status, params, detailsH }) => {
+    const response = await detailsH.handle({ params });
+    return status(200, response);
+  }, {
+    isAuth: true,
+    params: DetailsParams,
+    response: {
+      200: DetailsResponse
     },
   });
