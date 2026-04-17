@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    // Environment - Latest JavaScript features
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+
+    // Bundler mode - Modern module resolution for Bun
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Type checking - Strict mode enabled
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Best practices - Additional safety checks
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Bun runtime types
+    "types": ["@types/bun"],
+
+    // Module resolution paths
+    "paths": {
+      "@seeders/*": ["./prisma/seeds/*"],
+      "@prisma/*": ["./generated/prisma/*"],
+
+      "@dal/*": ["./source/core/dal/*"],
+      "@auth/*": ["./source/core/auth/*"],
+      
+      "@plugins/*": ["./source/plugins/*"],
+      "@features/*": ["./source/features/*"],
+
+      "@errors/*": ["./source/shared/errors/*"],
+    }
+  }
+}
