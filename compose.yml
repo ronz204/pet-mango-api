@@ -1,0 +1,18 @@
+name: mango-api
+
+include:
+  - path: ./docker/compose.postgres.yml
+  - path: ./docker/compose.redis.yml
+
+volumes:
+  mango-data:
+    driver: local
+    name: mango-data
+  redis-data:
+    driver: local
+    name: redis-data
+
+networks:
+  mango-network:
+    driver: bridge
+    name: mango-network
