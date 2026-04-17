@@ -1,1 +1,0 @@
-### Mango | Real Time Chat with Redis
