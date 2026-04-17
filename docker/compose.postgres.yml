@@ -1,6 +1,5 @@
 services:
   postgres:
-    env_file: .env.local
     image: postgres:16-alpine
     restart: unless-stopped
     container_name: postgres

@@ -2,7 +2,9 @@ name: mango-api
 
 include:
   - path: ./docker/compose.postgres.yml
+    env_file: .env.local
   - path: ./docker/compose.redis.yml
+    env_file: .env.local
 
 volumes:
   mango-data:
