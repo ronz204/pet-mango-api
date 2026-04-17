@@ -3,6 +3,11 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "bun run --watch source/boot.ts",
+    "prisma:generate": "bunx --bun prisma generate",
+    "prisma:migrate": "bunx --bun prisma migrate dev"
+  },
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
     "@elysiajs/jwt": "^1.4.1",
