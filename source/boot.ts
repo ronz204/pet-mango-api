@@ -5,12 +5,14 @@ import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
 
 import { RoomsPlugin } from "@features/rooms/rooms.plugin";
+import { IdentityPlugin } from "@features/identity/identity.plugin";
 
 export const app = new Elysia({ prefix: "/api" })
   .use(CorsPlugin)
   .use(ScalarPlugin)
   .use(HealthPlugin)
   .use(ErrorsPlugin)
+  .use(IdentityPlugin)
   .use(RoomsPlugin)
   .listen(3000);
 
