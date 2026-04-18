@@ -10,12 +10,11 @@ export namespace ReadAll {
 
   export function query(args: Args) {
     const take = args.limit ?? 100;
-    const page = args.offset ?? 1;
-    const skip = (page - 1) * take;
+    const skip = args.offset ?? 0;
 
     return {
       where: {
-        id: args.roomId,
+        roomId: args.roomId,
       },
       include: {
         sender: true,
