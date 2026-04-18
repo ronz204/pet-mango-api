@@ -1,5 +1,5 @@
 import type { RedisClient } from "bun";
-import type { MessageDto } from "@database/models/message.dto";
+import type { MessageDto } from "@dal/message/message.dto";
 import type { IMessageCache, DropperArgs, GetterArgs, SetterArgs } from "./message.icache";
 
 export class MessageCache implements IMessageCache {
