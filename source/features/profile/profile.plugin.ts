@@ -1,4 +1,5 @@
 import { Elysia } from "elysia";
+import { GetMyInvitationsPlugin } from "./get-invitations/get-invitations.plugin";
 import { GetProfileInfoPlugin } from "./get-profile-info/get-profile-info.plugin";
 import { UpdateBasicInfoPlugin } from "./update-basic-info/update-basic-info.plugin";
 
@@ -7,4 +8,5 @@ const name: string = "profile.plugin";
 
 export const ProfilePlugin = new Elysia({ name, prefix })
   .use(GetProfileInfoPlugin)
-  .use(UpdateBasicInfoPlugin);
+  .use(UpdateBasicInfoPlugin)
+  .use(GetMyInvitationsPlugin);
