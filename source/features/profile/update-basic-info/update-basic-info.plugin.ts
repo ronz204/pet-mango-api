@@ -1,11 +1,11 @@
 import { Elysia } from "elysia";
+import { UserDto } from "@dal/users/user.dto";
 import { UserDao } from "@dal/users/user.dao";
 import { AuthPlugin } from "@auth/auth.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 
 import { UpdateBasicInfoBody } from "./update-basic-info.schema";
 import { UpdateBasicInfoHandler } from "./update-basic-info.handler";
-import { UpdateBasicInfoResponse } from "./update-basic-info.schema";
 
 const name: string = "update-basic-info.plugin";
 
@@ -27,6 +27,6 @@ export const UpdateBasicInfoPlugin = new Elysia({ name })
     isAuth: true,
     body: UpdateBasicInfoBody,
     response: {
-      200: UpdateBasicInfoResponse,
+      200: UserDto,
     },
   });

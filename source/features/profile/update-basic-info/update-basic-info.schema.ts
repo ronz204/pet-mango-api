@@ -10,11 +10,4 @@ export const UpdateBasicInfoRequest = t.Object({
   userId: t.Number(),
 });
 
-export const UpdateBasicInfoResponse = t.Object({
-  id: t.Number(),
-  name: t.String(),
-  email: t.String(),
-}); 
-
 export type UpdateBasicInfoRequest = Static<typeof UpdateBasicInfoRequest>;
-export type UpdateBasicInfoResponse = Static<typeof UpdateBasicInfoResponse>;
