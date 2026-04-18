@@ -29,7 +29,6 @@ CREATE TABLE "mango"."members" (
     "userId" INTEGER NOT NULL,
     "roomId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "members_pkey" PRIMARY KEY ("id")
 );
@@ -41,7 +40,6 @@ CREATE TABLE "mango"."messages" (
     "senderId" INTEGER NOT NULL,
     "roomId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "messages_pkey" PRIMARY KEY ("id")
 );
@@ -51,7 +49,6 @@ CREATE TABLE "mango"."rooms" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "rooms_pkey" PRIMARY KEY ("id")
 );
@@ -63,7 +60,6 @@ CREATE TABLE "mango"."users" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
