@@ -32,8 +32,8 @@
       "@dal/*": ["./source/core/dal/*"],
       "@auth/*": ["./source/core/auth/*"],
       "@temp/*": ["./source/core/temp/*"],
-      "@types/*": ["./source/core/types/*"],
       
+      "@models/*": ["./source/models/*"],
       "@plugins/*": ["./source/plugins/*"],
       "@features/*": ["./source/features/*"],
 
