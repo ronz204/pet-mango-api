@@ -33,9 +33,9 @@
       "@auth/*": ["./source/core/auth/*"],
       "@cache/*": ["./source/core/cache/*"],
       
-      "@models/*": ["./source/models/*"],
       "@plugins/*": ["./source/plugins/*"],
       "@features/*": ["./source/features/*"],
+      "@database/*": ["./source/database/*"],
 
       "@errors/*": ["./source/shared/errors/*"],
     }
