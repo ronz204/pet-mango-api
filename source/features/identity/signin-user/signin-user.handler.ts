@@ -11,17 +11,17 @@ import { NotFoundError, ConflictError } from "@errors/barrep.error";
 export class SignInUserHandler {
   constructor(private dao: IUserDao) {};
 
-  public async handle(req: Request): Promise<Payload> {
-    const exists = await this.dao.obtain(req.body);
+  public async handle({ body }: Request): Promise<Payload> {
+    const exists = await this.dao.obtain(body);
     if (!exists) throw new NotFoundError("User not found");
 
-    const isValid = await this.verify(req, exists.password);
+    const isValid = await this.verify({ body }, exists.password);
     if (!isValid) throw new ConflictError("Invalid password");
 
     return AuthMapper.toResponse(exists);
   };
 
-  private async verify(req: Request, hashed: string): Promise<boolean> {
-    return await Bun.password.verify(req.body.password, hashed);
+  private async verify({ body }: Request, hashed: string): Promise<boolean> {
+    return await Bun.password.verify(body.password, hashed);
   };
 };

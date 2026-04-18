@@ -16,6 +16,7 @@ export const SignInUserPlugin = new Elysia({ name })
   .derive(({ prisma }) => {
     const dao = new UserDao(prisma);
     const handler = new SignInUserHandler(dao);
+    
     return { handler };
   })
 
