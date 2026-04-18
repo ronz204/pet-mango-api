@@ -1,10 +1,6 @@
 import type { RedisClient } from "bun";
-import type { MessageDto } from "@models/message.dto";
-
-import type {
-  IMessageCache, DropperArgs,
-  GetterArgs, SetterArgs,
-} from "./message.icache";
+import type { MessageDto } from "@database/models/message.dto";
+import type { IMessageCache, DropperArgs, GetterArgs, SetterArgs } from "./message.icache";
 
 export class MessageCache implements IMessageCache {
   private readonly CACHE_TTL = 300;

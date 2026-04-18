@@ -1,4 +1,4 @@
-import type { MessageDto } from "@models/message.dto"
+import { MessageDto } from "@database/models/message.dto";
 
 export interface IMessageCache {
   getter(args: GetterArgs): Promise<MessageDto[]>;
