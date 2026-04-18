@@ -7,6 +7,7 @@ import { ScalarPlugin } from "@plugins/scalar.plugin";
 import { RoomsPlugin } from "@features/rooms/rooms.plugin";
 import { ProfilePlugin } from "@features/profile/profile.plugin";
 import { IdentityPlugin } from "@features/identity/identity.plugin";
+import { InvitationsPlugin } from "@features/invitation/invitation.plugin";
 
 export const app = new Elysia({ prefix: "/api" })
   .use(CorsPlugin)
@@ -16,6 +17,7 @@ export const app = new Elysia({ prefix: "/api" })
   .use(IdentityPlugin)
   .use(ProfilePlugin)
   .use(RoomsPlugin)
+  .use(InvitationsPlugin)
   .listen(3000);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
