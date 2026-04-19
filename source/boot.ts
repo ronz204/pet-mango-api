@@ -5,6 +5,7 @@ import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
 
 import { RoomsPlugin } from "@features/rooms/rooms.plugin";
+import { TypingPlugin } from "@features/typing/typing.plugin";
 import { ProfilePlugin } from "@features/profile/profile.plugin";
 import { IdentityPlugin } from "@features/identity/identity.plugin";
 import { PresencePlugin } from "@features/presence/presence.plugin";
@@ -20,6 +21,7 @@ export const app = new Elysia({ prefix: "/api" })
   .use(RoomsPlugin)
   .use(InvitationsPlugin)
   .use(PresencePlugin)
+  .use(TypingPlugin)
   .listen(3000);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
