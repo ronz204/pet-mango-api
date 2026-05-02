@@ -1,13 +1,14 @@
+import { env } from "@env";
 import { Elysia } from "elysia";
 import openapi from "@elysiajs/openapi";
 
 export const ScalarPlugin = new Elysia({ name: "scalar.plugin" })
   .use(openapi({
-    path: "/scalar",
+    path: env.APP_DOCS,
     documentation: {
       info: {
-        title: "Mango API",
-        version: "1.0.0",
+        title: env.APP_NAME,
+        version: env.APP_VERSION,
       },
     },
   }));

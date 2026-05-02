@@ -1,10 +1,10 @@
+import { env } from "@env";
 import { Elysia } from "elysia";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
-import { PgConfig } from "@configs/postgres.config";
 
 const name: string = "prisma.plugin";
-const url = PgConfig.POSTGRES_URL;
+const url = env.POSTGRES_URL;
 
 export const PrismaPlugin = new Elysia({ name })
   .decorate(() => {
