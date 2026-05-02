@@ -17,11 +17,17 @@ const envSchema = z.object({
   POSTGRES_PORT: z.string().transform((val) => parseInt(val, 10)).default(5432),
 
   // ==========================================
-  // Redis Config
+  // Redis & Cache Config
   // ==========================================
   REDIS_URL: z.string(),
   REDIS_HOST: z.string(),
   REDIS_PORT: z.string().transform((val) => parseInt(val, 10)).default(6379),
+
+  // ==========================================
+  // Security Config
+  // ==========================================
+  SECRET_KEY: z.string(),
+  CORS_ORIGIN: z.string().transform((val) => val.split(",").map((origin) => origin.trim())),
 });
 
 export const env = envSchema.parse(process.env);
