@@ -38,6 +38,7 @@
       "@database/*": ["./source/database/*"],
 
       "@errors/*": ["./source/shared/errors/*"],
+      "@configs/*": ["./source/shared/configs/*"],
     }
   }
 }
