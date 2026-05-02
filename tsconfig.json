@@ -29,6 +29,7 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
 
+      "@env": ["./source/env.ts"],
       "@dal/*": ["./source/core/dal/*"],
       "@auth/*": ["./source/core/auth/*"],
       "@cache/*": ["./source/core/cache/*"],
@@ -36,9 +37,6 @@
       "@plugins/*": ["./source/plugins/*"],
       "@features/*": ["./source/features/*"],
       "@database/*": ["./source/database/*"],
-
-      "@errors/*": ["./source/shared/errors/*"],
-      "@configs/*": ["./source/shared/configs/*"],
     }
   }
 }
