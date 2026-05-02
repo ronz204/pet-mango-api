@@ -4,7 +4,7 @@ import openapi from "@elysiajs/openapi";
 
 export const ScalarPlugin = new Elysia({ name: "scalar.plugin" })
   .use(openapi({
-    path: env.APP_DOCS,
+    path: "/docs",
     documentation: {
       info: {
         title: env.APP_NAME,
